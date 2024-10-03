@@ -2,7 +2,7 @@ name: load-test
 env:
   testID: "14406938"
   inputStartFile: "dbank-visa-transfer.jmx"
-  uploadFileCheck: "true"
+  uploadFileCheck: "false"
   continuePipeline: "false"
   showTailLog: "false"
 on: push
