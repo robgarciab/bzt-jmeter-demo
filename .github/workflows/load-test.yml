@@ -1,0 +1,25 @@
+name: load-test
+env:
+  testID: "14406938"
+  inputStartFile: "dbank-visa-transfer.jmx"
+  uploadFileCheck: "true"
+  continuePipeline: "false"
+  showTailLog: "false"
+on: push
+jobs:
+  github-action:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.3.4
+      - name: Run Blazemeter test
+        uses: BlazeRunner-BZR/Github-Action@v8.1
+        id: run-test
+        with:
+          apiKey: ${{ secrets.BZM_API_KEY }}
+          apiSecret: ${{ secrets.BZM_API_SECRET }}
+          testID: ${{env.testID}}
+          uploadFileCheck: ${{env.uploadFileCheck}}
+          inputStartFile: ${{env.inputStartFile}}
+          continuePipeline: ${{env.continuePipeline}}
+          showTailLog: ${{env.showTailLog}}
